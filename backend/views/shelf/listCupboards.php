@@ -14,14 +14,9 @@ use common\models\Cupboards;
  * @var $name
  */
 
-
-print_r($name);
-
-
-
 ?>
 <div>
-    <h2 style="color: mediumvioletred">List Shelf >>> </h2>
+    <h2 style="color: mediumvioletred">List Shelf <a style="color: blue">>>></a> <?php echo($name); ?></h2>
 </div>
 <?php
 echo GridView::widget([

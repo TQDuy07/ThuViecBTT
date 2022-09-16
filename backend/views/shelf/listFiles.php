@@ -11,12 +11,16 @@ use yii\db\Query;
 
 /**
  * @var $provider
+ * @var $nameShelf
+ * @var $nameCup
  */
 
 
 /////////////////////////////////////////// model File
 ?>
-<div><h2>List File</h2></div>
+    <div>
+        <h2 style="color: mediumvioletred">List Shelf <a style="color: blue">>>></a> <?php echo($nameShelf); ?> <a style="color: blue">>>></a> <?php echo($nameCup); ?></h2>
+    </div>
 <?php
 
 

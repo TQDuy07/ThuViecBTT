@@ -117,9 +117,12 @@ class ShelfController extends Controller
 
         $model = $dataShelf->getModels();
         $name = $model['name'];
-echo $id;
-        print_r($model);
-        exit();
+
+        $id1 =$id['id'];
+
+        $sqlShelf = Yii::$app->db->createCommand('SELECT name FROM shelf where id_shelf ='.$id1)->queryOne();
+        $name  = $sqlShelf['name'];
+
         return $this->render('listCupboards',
         [
             'id' => $id,
@@ -133,7 +136,16 @@ echo $id;
     {
         $result = Yii::$app->request->get();
 //        print_r(Yii::$app->request->get());
+        $idCup = $result['id'];
         $id = $result['id'];
+
+        $nameCup1 = Yii::$app->db->createCommand('SELECT cupboards.name as "nameCup", shelf.name as "nameShelf" 
+FROM cupboards 
+LEFT JOIN shelf
+ON cupboards.id_shelf = shelf.id_shelf
+where cupboards.id_cupboards ='.$idCup)->queryOne();
+        $nameCup  = $nameCup1['nameCup'];
+        $nameShelf = $nameCup1['nameShelf'];
 
 
         $count = Yii::$app->db->createCommand('
@@ -162,7 +174,9 @@ echo $id;
             [
                 'id' => $id,
                 'provider' => $provider,
-                'model' => $models
+                'model' => $models,
+                'nameCup' => $nameCup,
+                'nameShelf'=>$nameShelf
             ]);
     }
 }
