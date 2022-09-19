@@ -29,6 +29,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
 #xdebug
-RUN pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug
+#RUN pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug
 
 EXPOSE 9000
