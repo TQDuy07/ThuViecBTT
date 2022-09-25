@@ -7,8 +7,6 @@ services:
         ports:
             - "80:80"
         volumes:
-            - "/etc/timezone:/etc/timezone:ro"
-            - "/etc/localtime:/etc/localtime:ro"
             - ..:/var/www/html
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ./nginx/log:/var/log/nginx
@@ -21,18 +19,12 @@ services:
         container_name: docker_php
         working_dir: /var/www/html
         volumes:
-            - "/etc/timezone:/etc/timezone:ro"
-            - "/etc/localtime:/etc/localtime:ro"
             - ..:/var/www/html
             - ./php/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
-        environment:
-            PHP_EXTENSION_XDEBUG: 1
-
         ports:
             - "9000:9000"
         depends_on:
             - docker_redis
-
         network_mode: "network_customize"
 
     docker_mysql:
@@ -41,8 +33,6 @@ services:
         ports:
             - "3307:3306"
         volumes:
-            - "/etc/timezone:/etc/timezone:ro"
-            - "/etc/localtime:/etc/localtime:ro"
             - ./mysql/data:/var/lib/mysql
             - ./mysql/log:/var/log/mysql
         environment:
@@ -55,11 +45,21 @@ services:
         image: redis:latest
         container_name: docker_redis
         volumes:
-            - "/etc/timezone:/etc/timezone:ro"
-            - "/etc/localtime:/etc/localtime:ro"
             - ./redis/data:/data
         ports:
-            - "6379:6379"
+            - "6378:6378"
+        network_mode: "network_customize"
+
+    docker_rabbitmq:
+        image: rabbitmq:3-management-alpine
+        container_name: docker_rabbitmq
+        volumes:
+#            - ./rabbitmq/etc:/etc
+            - ./rabbitmq/data:/data
+            - ./rabbitmq/log:/log
+        ports:
+            - "5672:5672"
+            - "15672:15672"
         network_mode: "network_customize"
 
 

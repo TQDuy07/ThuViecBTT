@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+    docker_nginx:
+        image: nginx:latest
+        container_name: docker_nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ..:/var/www/html
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/log:/var/log/nginx
+        depends_on:
+            - docker_php
+        network_mode: "network_customize"
+
+    docker_php:
+        build: ./php/php-fpm
+        container_name: docker_php
+        working_dir: /var/www/html
+        volumes:
+            - ..:/var/www/html
+            - ./php/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+        ports:
+            - "9000:9000"
+        depends_on:
+            - docker_redis
+
+        network_mode: "network_customize"
+
+    docker_mysql:
+        image: mysql:5.7.22
+        container_name: docker_mysql
+        ports:
+            - "3307:3306"
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+            - ./mysql/log:/var/log/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: zyz123
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+        network_mode: "network_customize"
+
+    docker_redis:
+        image: redis:latest
+        container_name: docker_redis
+        volumes:
+            - ./redis/data:/data
+        ports:
+            - "6379:6379"
+        network_mode: "network_customize"
+
+
+    docker_phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: docker_phpmyadmin
+
+        links:
+            - docker_mysql
+        environment:
+            PMA_HOST: docker_mysql
+            PMA_PORT: 3306
+        ports:
+            - '8080:80'
+
+        network_mode: "network_customize"
+
+networks:
+    network_customize:
+        external: true

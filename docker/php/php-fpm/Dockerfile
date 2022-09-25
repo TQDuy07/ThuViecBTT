@@ -1,8 +1,5 @@
 FROM php:7.4-fpm
 
-
-
-
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -12,8 +9,6 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip
-
-
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -25,10 +20,5 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd intl
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run Composer and Artisan Commands
-
-
-
-#xdebug
-#RUN pecl install xdebug-2.6.1 && docker-php-ext-enable xdebug
 
 EXPOSE 9000

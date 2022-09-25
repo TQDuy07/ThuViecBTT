@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 
-class ShelfForm extends Model
+class ShelfForm1 extends Model
 {
     public $name;
     public $description;

@@ -16,7 +16,7 @@ use common\models\Cupboards;
 
 ?>
 <div>
-    <h2 style="color: mediumvioletred">List Shelf <a style="color: blue">>>></a> <?php echo($name); ?></h2>
+    <h2 style="color: mediumvioletred"> <?php echo($name); ?></h2>
 </div>
 <?php
 echo GridView::widget([

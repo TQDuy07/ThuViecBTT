@@ -80,8 +80,7 @@ echo GridView::widget([
 
 ]);
 
-//print_r($dataShelf->sort);
-
+//print_r($dataShelf);
 
 //echo ListView::widget([
 //    'dataProvider' => $dataShelf,
@@ -93,3 +92,55 @@ echo GridView::widget([
 //
 //]);
 ?>
+
+<!--<menu>-->
+<!--    <button onclick="showShelf()">Library</button>-->
+<!---->
+<!--    --><?php
+////    for( $i=0;$i < 5;$i++){?>
+<!--    <div  style="margin-left: 50px">-->
+<!--        <input  onclick="showCupboards()" class="shelf" type="button" value="--><?php //echo "Phim"; ?><!--"> </div>-->
+<!--<!--    -->--><?php ////}?>
+<!---->
+<!--    <div  style="margin-left: 100px"><input onclick="showFile()" id="cupboards" type="hidden" value="phan_1"> </div>-->
+<!--    <div  style="margin-left: 150px"><input  id="file" type="hidden" value="tap_1"> </div>-->
+<!--</menu>-->
+<script>
+    function showShelf()
+    {
+
+        // var shelf = document.getElementById('shelf');
+        var shelf = document.querySelectorAll(''`[class^="shelf"]`);
+        var cupboards = document.getElementById('cupboards');
+        var file = document.getElementById('file');
+        if(shelf.type == "button")
+        {
+            shelf.type = "hidden";
+            cupboards.type = "hidden";
+            file.type = "hidden";
+        }else {
+            shelf.type = "button";
+        }
+
+    }
+    function showCupboards()
+    {
+        if(cupboards.type == "button")
+        {
+            cupboards.type = "hidden";
+            file.type = "hidden";
+        }else {
+            cupboards.type = "button";
+        }
+
+    }
+    function showFile()
+    {
+        if(file.type == "button")
+        {
+            file.type = "hidden";
+        }else {
+            file.type = "button";
+        }
+    }
+</script>

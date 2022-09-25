@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\CupboardsRD;
 use common\models\query\CupboardsQuery;
 use Yii;
 use yii\helpers\FileHelper;
@@ -141,6 +142,15 @@ class Cupboards extends \yii\db\ActiveRecord
             if(!FileHelper::createDirectory($path, $mode = 0777, $recursive = true)){ $checkTrans += 1;}
             if($checkTrans === 0)
             {
+                /*Redis*/
+                $cupboards = new CupboardsRD();
+                $cupboards->id_cupboards = $insert_id = Yii::$app->db->getLastInsertID();
+                $cupboards->id_shelf = $model->id_shelf;
+                $cupboards->name = $model->name;
+                $cupboards->description = $model->description;
+                $cupboards->location = $model->location;
+                $cupboards->created_at = $model->created_at;
+                $cupboards->save();
                 $transaction->commit();
                 return true;
             }

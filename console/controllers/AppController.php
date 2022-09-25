@@ -169,6 +169,11 @@ class AppController extends Controller
         return ExitCode::OK;
     }
 
+    public function actionRabbit()
+    {
+        echo "1111111111111";
+    }
+
     /**
      * Creates random ArticleCategory models.
      *

@@ -2,6 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\CupboardsRD;
+use backend\models\FileRD;
+use backend\models\ShelfForm;
 use common\models\Cupboards;
 use common\models\File;
 use common\models\Shelf;
@@ -10,6 +13,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\data\SqlDataProvider;
 use yii\data\ActiveDataProvider;
+use yii\redis\Connection;
 
 class ShelfController extends Controller
 {
@@ -96,13 +100,17 @@ class ShelfController extends Controller
                 'pageSize' => 10,
             ]
         ]);
+        /////////////////////////show tree folder
+        $sqlShelf = Yii::$app->db->createCommand('SELECT * FROM shelf')->queryAll();
 
         return $this->render('listViews',
         [
             'dataShelf' => $dataShelf,
+            'sqlShelf' => $sqlShelf,
 
         ]);
     }
+
 
     public function actionListCupboards()
     {
@@ -167,9 +175,10 @@ where cupboards.id_cupboards ='.$idCup)->queryOne();
                 'pageSize' => 10,
             ],
         ]);
+//        print_r($provider->sql);
 
         $models = $provider->getModels();
-
+//print_r($provider);exit();
         return $this->render('listFiles',
             [
                 'id' => $id,
@@ -177,6 +186,59 @@ where cupboards.id_cupboards ='.$idCup)->queryOne();
                 'model' => $models,
                 'nameCup' => $nameCup,
                 'nameShelf'=>$nameShelf
+            ]);
+    }
+
+    //////////////////////////REDISSSSS????
+
+    public function actionListViewsRd()
+    {
+        Yii::$app->queues->push(new Shelf([
+            'message'=>'Code Improve test message',
+            'phone'=>'9090909090'
+        ]));
+//
+//        $redis = Yii::$app->redis;
+//
+//        $idShelf =  $redis->executeCommand('LRANGE',['shelf_rd', '0', '-1']);
+//
+//        $dataSh = array();
+//        foreach ($idShelf as $id_Sh){
+//            $rowShelf =  $redis->executeCommand('HGETALL',[ 'shelf_rd:a:'.$id_Sh]);
+//            $dataSh[$id_Sh] = $rowShelf;
+//        }
+//        return $this->render('listViews_rd',
+//            [
+//                'dataSh' => $dataSh,
+//            ]);
+    }
+    public function actionListCupboardsRd()
+    {
+        $idReq = Yii::$app->request->get();
+
+        $redis = Yii::$app->redis;
+        $dataCup = new CupboardsRD();
+        $dataCupCount = new CupboardsRD();
+        $dataCupCount = CupboardsRD::find()->where(['id_shelf' => $idReq])->count();
+        $dataCup = CupboardsRD::find()->where(['id_shelf' => $idReq])->asArray()->all();
+
+        return $this->render('listCupboards_rd',
+            [
+                'dataCup' => $dataCup,
+                'dataCupCount'=>$dataCupCount,
+            ]);
+    }
+    public function actionListFilesRd()
+    {
+        $idReq = Yii::$app->request->get();
+
+        $redis = Yii::$app->redis;
+        $dataFile = new FileRD();
+        $dataFile = FileRD::find()->where(['id_cupboards' => $idReq])->asArray()->all();
+
+        return $this->render('listFile_rd',
+            [
+                'dataFile' => $dataFile,
             ]);
     }
 }

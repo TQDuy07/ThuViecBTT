@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\FileRD;
 use trntv\aceeditor\AceEditor;
 use Yii;
 use yii\helpers\FileHelper;
@@ -150,6 +151,15 @@ class File extends \yii\db\ActiveRecord
 
             if($checkTrans === 0)
             {
+                /*Redis*/
+                $cupboards = new FileRD();
+                $cupboards->id_file = $insert_id = Yii::$app->db->getLastInsertID();
+                $cupboards->id_cupboards = $model->id_cupboards;
+                $cupboards->id_shelf = $model->id_shelf;
+                $cupboards->name = $model->name;
+                $cupboards->location = $model->location;
+                $cupboards->created_at = $model->created_at;
+                $cupboards->save();
                 $transaction->commit();
                 return true;
             }

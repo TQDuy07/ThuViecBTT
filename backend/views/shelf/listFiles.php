@@ -19,7 +19,7 @@ use yii\db\Query;
 /////////////////////////////////////////// model File
 ?>
     <div>
-        <h2 style="color: mediumvioletred">List Shelf <a style="color: blue">>>></a> <?php echo($nameShelf); ?> <a style="color: blue">>>></a> <?php echo($nameCup); ?></h2>
+        <h2 style="color: mediumvioletred"> <?php echo($nameShelf); ?> <a style="color: blue">>>></a> <?php echo($nameCup); ?></h2>
     </div>
 <?php
 
