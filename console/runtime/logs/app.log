@@ -1,0 +1,84 @@
+2022-09-25 15:04:53 [-][-][-][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Setting unknown property: yii\queue\db\Queue::path in /var/www/html/vendor/yiisoft/yii2/base/Component.php:209
+Stack trace:
+#0 /var/www/html/vendor/yiisoft/yii2/BaseYii.php(558): yii\base\Component->__set('path', '@common/runtime...')
+#1 /var/www/html/vendor/yiisoft/yii2/base/BaseObject.php(107): yii\BaseYii::configure(Object(yii\queue\db\Queue), Array)
+#2 [internal function]: yii\base\BaseObject->__construct(Array)
+#3 /var/www/html/vendor/yiisoft/yii2/di/Container.php(419): ReflectionClass->newInstanceArgs(Array)
+#4 /var/www/html/vendor/yiisoft/yii2/di/Container.php(170): yii\di\Container->build('yii\\queue\\db\\Qu...', Array, Array)
+#5 /var/www/html/vendor/yiisoft/yii2/BaseYii.php(365): yii\di\Container->get('yii\\queue\\db\\Qu...', Array, Array)
+#6 /var/www/html/vendor/yiisoft/yii2/di/ServiceLocator.php(137): yii\BaseYii::createObject(Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Module.php(766): yii\di\ServiceLocator->get('queue', true)
+#8 /var/www/html/vendor/yiisoft/yii2/base/Application.php(311): yii\base\Module->get('queue')
+#9 /var/www/html/vendor/yiisoft/yii2/base/Application.php(271): yii\base\Application->bootstrap()
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#11 /var/www/html/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(204): yii\base\BaseObject->__construct(Array)
+#13 /var/www/html/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#14 /var/www/html/console/yii(26): yii\console\Application->__construct(Array)
+#15 {main}
+2022-09-25 15:04:53 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HOSTNAME' => '5dede15a1ff3'
+    'PHP_VERSION' => '7.4.30'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'GPG_KEYS' => '42670A7FE4D0441C8E4632349E4FDC074A4EF02D 5A52880781F755608BF815FC910DEB46F53EA312'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PWD' => '/var/www/html'
+    'HOME' => '/root'
+    'PHP_SHA256' => 'ea72a34f32c67e79ac2da7dfe96177f3c451c3eefae5810ba13312ed398ba70d'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'TERM' => 'xterm'
+    'PHP_URL' => 'https://www.php.net/distributions/php-7.4.30.tar.xz'
+    'SHLVL' => '1'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-7.4.30.tar.xz.asc'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'console/yii'
+    'SCRIPT_NAME' => 'console/yii'
+    'SCRIPT_FILENAME' => 'console/yii'
+    'PATH_TRANSLATED' => 'console/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1664118293.5958
+    'REQUEST_TIME' => 1664118293
+    'argv' => [
+        0 => 'console/yii'
+        1 => 'queues/run'
+    ]
+    'argc' => 2
+    'YII_DEBUG' => 'true'
+    'YII_ENV' => 'dev'
+    'APP_MAINTENANCE' => '0'
+    'LINK_ASSETS' => 'true'
+    'DB_DSN' => 'mysql:host=docker_mysql;port=3306;dbname=yii2-starter-kit'
+    'DB_USERNAME' => 'root'
+    'DB_PASSWORD' => 'zyz123'
+    'DB_TABLE_PREFIX' => ''
+    'DB_CHARSET' => 'utf8mb4'
+    'TEST_DB_DSN' => 'mysql:host=docker_mysql;port=3306;dbname=yii2-starter-kit-test'
+    'TEST_DB_USERNAME' => 'root'
+    'TEST_DB_PASSWORD' => 'root'
+    'API_HOST_INFO' => 'http://api.yii2-starter-kit.localhost'
+    'FRONTEND_HOST_INFO' => 'http://yii2-starter-kit.localhost'
+    'BACKEND_HOST_INFO' => 'http://backend.yii2-starter-kit.localhost'
+    'STORAGE_HOST_INFO' => 'http://storage.yii2-starter-kit.localhost'
+    'SMTP_HOST' => 'mailcatcher'
+    'SMTP_PORT' => '1025'
+    'FRONTEND_COOKIE_VALIDATION_KEY' => '<generated_key>'
+    'BACKEND_COOKIE_VALIDATION_KEY' => '<generated_key>'
+    'ADMIN_EMAIL' => 'admin@yii2-starter-kit.localhost'
+    'ROBOT_EMAIL' => 'robot@yii2-starter-kit.localhost'
+    'GITHUB_CLIENT_ID' => 'your-client-id'
+    'GITHUB_CLIENT_SECRET' => 'your-client-secret'
+    'GLIDE_SIGN_KEY' => '<generated_key>'
+    'GLIDE_MAX_IMAGE_SIZE' => '4000000'
+    'COMPOSE_CONVERT_WINDOWS_PATHS' => '1'
+]

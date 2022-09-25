@@ -1,0 +1,24 @@
+{
+    "name": "enqueue/test",
+    "homepage": "https://enqueue.forma-pro.com/",
+    "license": "MIT",
+    "support": {
+        "email": "opensource@forma-pro.com",
+        "issues": "https://github.com/php-enqueue/enqueue-dev/issues",
+        "forum": "https://gitter.im/php-enqueue/Lobby",
+        "source": "https://github.com/php-enqueue/enqueue-dev",
+        "docs": "https://github.com/php-enqueue/enqueue-dev/blob/master/docs/index.md"
+    },
+    "require": {
+        "enqueue/dsn": "^0.10"
+    },
+    "autoload": {
+        "psr-4": { "Enqueue\\Test\\": "" }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.10.x-dev"
+        }
+    }
+}
