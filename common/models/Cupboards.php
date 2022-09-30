@@ -4,6 +4,8 @@ namespace common\models;
 
 use backend\models\CupboardsRD;
 use common\models\query\CupboardsQuery;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use Yii;
 use yii\helpers\FileHelper;
 
@@ -130,33 +132,72 @@ class Cupboards extends \yii\db\ActiveRecord
 
             $model->created_at = Yii::$app->formatter->asDatetime('NOW', 'php:Y-m-d H:i:s');
 
-            $path = '../../Library/'.$nameShelf."/".$model->name;
+            $path = 'Library/'.$nameShelf."/".$model->name;
 
             // check actions
-            $checkTrans = 0;
-            $transaction = Yii::$app->db->beginTransaction();
+//            $checkTrans = 0;
+//            $transaction = Yii::$app->db->beginTransaction();
             // Check exist directory
             $directory = "../../Library/".$nameShelf."/".$model->name;
-            if (file_exists($directory)) { $checkTrans += 1; }
-            if (!$model->save()){ $checkTrans += 1; }
-            if(!FileHelper::createDirectory($path, $mode = 0777, $recursive = true)){ $checkTrans += 1;}
-            if($checkTrans === 0)
-            {
-                /*Redis*/
-                $cupboards = new CupboardsRD();
-                $cupboards->id_cupboards = $insert_id = Yii::$app->db->getLastInsertID();
-                $cupboards->id_shelf = $model->id_shelf;
-                $cupboards->name = $model->name;
-                $cupboards->description = $model->description;
-                $cupboards->location = $model->location;
-                $cupboards->created_at = $model->created_at;
-                $cupboards->save();
-                $transaction->commit();
-                return true;
+//            if (file_exists($directory)) { $checkTrans += 1; }
+//            if (!$model->save()){ $checkTrans += 1; }
+//            if(!FileHelper::createDirectory($path, $mode = 0777, $recursive = true)){ $checkTrans += 1;}
+//            if($checkTrans === 0)
+//            {
+//                /*Redis*/
+//                $cupboards = new CupboardsRD();
+//                $cupboards->id_cupboards = $insert_id = Yii::$app->db->getLastInsertID();
+//                $cupboards->id_shelf = $model->id_shelf;
+//                $cupboards->name = $model->name;
+//                $cupboards->description = $model->description;
+//                $cupboards->location = $model->location;
+//                $cupboards->created_at = $model->created_at;
+//                $cupboards->save();
+//                $transaction->commit();
+//                return true;
+//            }
+//            else{
+//                $transaction->rollBack();
+//                return false  ;
+//            }
+            if (file_exists($directory)) {
+                return false;
             }
-            else{
-                $transaction->rollBack();
-                return false  ;
+            else
+            {
+                $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+                $channel = $connection->channel();
+                $channel->queue_declare('cupboards',
+                    false,
+                    false,
+                    false,
+                    false);
+
+                $arr = [];
+                array_push($arr, $model->id_shelf);
+                array_push($arr, $model->name);
+                array_push($arr, $model->description);
+                array_push($arr, $model->location);
+                array_push($arr, $model->created_at);
+                array_push($arr, $path);
+
+
+//                print_r($arr);
+//                echo "-------------------<br>";
+                $modelJS = json_encode($arr);
+//                print_r($modelJS);
+//                echo "-------------------<br>";
+//                print_r(json_decode($modelJS));
+
+                $msg = new AMQPMessage($modelJS);
+
+//                print_r($msg);exit();
+
+                $channel->basic_publish($msg, '', 'cupboards');
+                $channel->close();
+                $connection->close();
+
+                return true;
             }
         }
     }

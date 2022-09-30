@@ -119,17 +119,17 @@
 //
 //return $config;
 
-$db = require __DIR__ . '/db.php';
+//$db = require __DIR__ . '/db.php';
 
 $config = [
     'homeUrl' => Yii::getAlias('@backendUrl'),
     'controllerNamespace' => 'backend\controllers',
     'defaultRoute' => 'timeline-event/index',
     'timeZone' => 'Asia/Ho_Chi_Minh',
-    'bootstrap' => [
-        'queues', // The component registers its own console commands
+//    'bootstrap' => [
+//        'queue_rabbit', // The component registers its own console commands
 //        'queues', // The component registers its own console commands
-    ],
+//    ],
     'components' => [
         'redis' => [
             'class' => 'yii\redis\Connection',
@@ -137,27 +137,30 @@ $config = [
             'port' => 6379,
             'database' => 0,
         ],
-//        'queues' => [
-//            'class' => 	\yii\queue\amqp_interop\Queue::class,
-////            'hostname' => 'docker_rabbitmq',
-//            'port' => 5672,
+
+        'queue_rabbit' => [
+//            'class' => \yii\queue\amqp\Queue::class,
+//            'hostname' => 'docker_rabbitmq',
+//            'port' => 15672,
 //            'user' => 'guest',
 //            'password' => 'guest',
-//            'queueName' => 'queue',
-//            'driver' => yii\queue\amqp_interop\Queue::ENQUEUE_AMQP_LIB,
-//
-//            // or
-////            'dsn' => 'amqp://guest:guest@localhost:5672/%2F',
-//
-//            // or, same as above
-//            'dsn' => 'amqp:',
-//
-        'queues' => [
-            'class' => \yii\queue\db\Queue::class,
-            'db' => 'db', // DB connection component or its config
-            'tableName' => '{{%queue}}', // Table name
-            'channel' => 'default', // Queue channel key
-            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex used to sync queries
+            'class' => \yii\queue\amqp_interop\Queue::class,
+            'port' => 5672,
+            'user' => 'guest',
+            'password' => 'guest',
+            'queueName' => 'queue',
+            'driver' => yii\queue\amqp_interop\Queue::ENQUEUE_AMQP_LIB,
+
+            // or
+//            'dsn' => 'amqp://guest:guest@localhost:5672/%2F',
+
+            // or, same as above
+            'dsn' => 'amqp:',
+//            'db' => 'db', // DB connection component or its config
+//            'tableName' => '{{%queue}}', // Table name
+//            'channel' => 'default', // Queue channel key
+//            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex used to sync queries
+
         ],
 
         'errorHandler' => [

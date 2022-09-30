@@ -3,6 +3,8 @@
 namespace common\models;
 
 use backend\models\FileRD;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use trntv\aceeditor\AceEditor;
 use Yii;
 use yii\helpers\FileHelper;
@@ -130,8 +132,8 @@ class File extends \yii\db\ActiveRecord
             $path =  "../../Library/".$nameshelf."/".$nameCupboards."/".$model->name->baseName.".".$model->name->extension;
 
             //check actions
-            $checkTrans = 0;
-            $transaction = Yii::$app->db->beginTransaction();
+//            $checkTrans = 0;
+//            $transaction = Yii::$app->db->beginTransaction();
 
             // Check exist directory
             if (file_exists($path))
@@ -140,33 +142,86 @@ class File extends \yii\db\ActiveRecord
                 $model->location = $nameshelf."/".$nameCupboards."/".$model->name->baseName."_".$addDate.".".$model->name->extension;
 
                 $path = "../../Library/".$nameshelf."/".$nameCupboards."/".$model->name->baseName."_".$addDate.".".$model->name->extension;
-                chmod($model->name->tempName , 0777);
+//                chmod($model->name->tempName , 0777);
                 $model->name->name = $model->name->baseName."_".$model->created_at.".".$model->name->extension;
             }
+//            var_dump($model->name);
+//            $model->name->tempName."<br>";
+//            exit();
+//            echo $path;//            echo __FILE__;
+//            echo basename($model->name->tempName)."<br>";
+//            echo pathinfo($model->name->tempName, PATHINFO_EXTENSION) ;
+//            exit();
 //            print_r($model->name);
 //            exit();
-            if(!$model->save()){$checkTrans += 1;}
-            if(!copy($model->name->tempName, $path)){$checkTrans += 1;}
+//            if(!$model->save()){$checkTrans += 1;}
+            copy($model->name->tempName, $path);
             chmod($path , 0777);
 
-            if($checkTrans === 0)
-            {
-                /*Redis*/
-                $cupboards = new FileRD();
-                $cupboards->id_file = $insert_id = Yii::$app->db->getLastInsertID();
-                $cupboards->id_cupboards = $model->id_cupboards;
-                $cupboards->id_shelf = $model->id_shelf;
-                $cupboards->name = $model->name;
-                $cupboards->location = $model->location;
-                $cupboards->created_at = $model->created_at;
-                $cupboards->save();
-                $transaction->commit();
-                return true;
-            }
-            else{
-                $transaction->rollBack();
-                return false;
-            }
+//            if($checkTrans === 0)
+//            {
+//                /*Redis*/
+//                $cupboards = new FileRD();
+//                $cupboards->id_file = $insert_id = Yii::$app->db->getLastInsertID();
+//                $cupboards->id_cupboards = $model->id_cupboards;
+//                $cupboards->id_shelf = $model->id_shelf;
+//                $cupboards->name = $model->name;
+//                $cupboards->location = $model->location;
+//                $cupboards->created_at = $model->created_at;
+//                $cupboards->save();
+//                $transaction->commit();
+//                return true;
+//            }
+//            else{
+//                $transaction->rollBack();
+//                return false;
+//            }
+            $path2 =  "Library/".$nameshelf."/".$nameCupboards."/".$model->name->baseName.".".$model->name->extension;
+            $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+            $channel = $connection->channel();
+            $channel->queue_declare('file',
+                false,
+                false,
+                false,
+                false);
+
+            $arr = [];
+            array_push($arr, $model->id_cupboards);
+            array_push($arr, $model->id_shelf);
+            array_push($arr, $model->name->name);
+            array_push($arr, $model->location);
+            array_push($arr, $model->created_at);
+            array_push($arr, $path2);
+            array_push($arr, $model->name->tempName);
+
+
+
+//                echo "-------------------<br>";
+            $modelJS = json_encode($arr);
+//            print_r($modelJS);exit();
+//                echo "-------------------<br>";
+//                print_r(json_decode($modelJS));
+
+            $msg = new AMQPMessage($modelJS);
+
+//                print_r($msg);exit();
+
+            $channel->basic_publish($msg, '', 'file');
+            $channel->close();
+            $connection->close();
+
+            return true;
         }
+    }
+
+    public function copyFile($tempName, $path)
+    {
+        echo __FILE__;
+        echo getcwd();
+//        if(!copy($tempName, $path)){
+//            return false;
+//        }else{
+//            return true;
+//        }
     }
 }

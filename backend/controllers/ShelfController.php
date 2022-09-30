@@ -4,16 +4,21 @@ namespace backend\controllers;
 
 use backend\models\CupboardsRD;
 use backend\models\FileRD;
-use backend\models\ShelfForm;
+//use backend\models\ShelfForm;
 use common\models\Cupboards;
 use common\models\File;
 use common\models\Shelf;
+use common\models\ShelfRB;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\data\SqlDataProvider;
 use yii\data\ActiveDataProvider;
 use yii\redis\Connection;
+
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
 
 class ShelfController extends Controller
 {
@@ -23,6 +28,9 @@ class ShelfController extends Controller
     }
     public function actionCreateShelf()
     {
+
+
+//        Yii::$app->cache->set('duy', 123123);
         $model = new Shelf();
 //        $model->setScenario('create');
         if ($model->load(Yii::$app->request->post()) && $model->saveShelf()) {
@@ -193,24 +201,19 @@ where cupboards.id_cupboards ='.$idCup)->queryOne();
 
     public function actionListViewsRd()
     {
-        Yii::$app->queues->push(new Shelf([
-            'message'=>'Code Improve test message',
-            'phone'=>'9090909090'
-        ]));
-//
-//        $redis = Yii::$app->redis;
-//
-//        $idShelf =  $redis->executeCommand('LRANGE',['shelf_rd', '0', '-1']);
-//
-//        $dataSh = array();
-//        foreach ($idShelf as $id_Sh){
-//            $rowShelf =  $redis->executeCommand('HGETALL',[ 'shelf_rd:a:'.$id_Sh]);
-//            $dataSh[$id_Sh] = $rowShelf;
-//        }
-//        return $this->render('listViews_rd',
-//            [
-//                'dataSh' => $dataSh,
-//            ]);
+        $redis = Yii::$app->redis;
+
+        $idShelf =  $redis->executeCommand('LRANGE',['shelf_rd', '0', '-1']);
+
+        $dataSh = array();
+        foreach ($idShelf as $id_Sh){
+            $rowShelf =  $redis->executeCommand('HGETALL',[ 'shelf_rd:a:'.$id_Sh]);
+            $dataSh[$id_Sh] = $rowShelf;
+        }
+        return $this->render('listViews_rd',
+            [
+                'dataSh' => $dataSh,
+            ]);
     }
     public function actionListCupboardsRd()
     {

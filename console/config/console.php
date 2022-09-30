@@ -6,6 +6,12 @@ return [
     'controllerNamespace' => 'console\controllers',
     'bootstrap' => ['log','queues'],
     'components' => [
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'docker_redis',
+            'port' => 6379,
+            'database' => 0,
+        ],
         'queues' => [
             'class' => \yii\queue\db\Queue::class,
             'db' => 'db', // DB connection component or its config

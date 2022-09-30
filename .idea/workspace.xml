@@ -1,7 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="67b288ec-9d7a-4f08-a3a8-f488d46fbe01" name="Changes" comment="" />
+    <list default="true" id="67b288ec-9d7a-4f08-a3a8-f488d46fbe01" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common/models/ShelfRB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PHIM/DORAEMON/doraemon_tap_1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PHIM/DORAEMON/doraemon_tap_1_2022-09-22__08:03:45.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PHIM/DORAEMON/doraemon_tap_1_2022-09-23__01:51:28.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/TAI_LIEU/TIENG_ANH/tieng_anh_p1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/TAI_LIEU/TIENG_ANH/tieng_anh_p1_2022-09-22__07:53:27.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/VIDEO_1/DORAEMON___111/doraemon_tap_1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ShelfController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ShelfController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63302042a9d0d.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330204305f35.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63302123de3a1.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330212443698.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330212611bb1.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330212685461.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633022d4a7a19.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633022d4f091c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633022d761166.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633022d8052c5.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63302563cec9e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63302564dc0c1.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330597fd4d7d.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/6330598032ef7.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63305a5c3f137.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63305a5c77513.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066a7770ea.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066a8d006a.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066aae9d5e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066ab3cf05.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066aceab3c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066ad3413a.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066af0c3f8.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066af44011.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b0a5d1e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b0e255c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b1431dc.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b17d99c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b2b0fce.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633066b2e8b15.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067172cdd9.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067178665e.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306718c2334.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067191ab66.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067d4f2ec5.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067d537554.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/633067f34cb24.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306a0a1eeb5.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306a16f2bc7.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306a180021c.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306ab6ad64d.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306c6f7783f.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d4a37c1d.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d4f83ea0.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d649c881.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d6d333da.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d8d4b4f0.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306d8ed5ed8.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306daad49fe.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306e48769c6.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/63306ed066f95.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/debug/index.data" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/debug/index.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/shelf/listCupboards_rd.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/shelf/listCupboards_rd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Cupboards.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Cupboards.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Shelf.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Shelf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console/config/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/console/config/console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console/controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/console/controllers/AppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console/runtime/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/console/runtime/logs/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/auto.cnf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/auto.cnf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/ib_buffer_pool" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/ib_logfile0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/ibtmp1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/mysql/innodb_index_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/mysql/innodb_table_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/queue.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/queue.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/shelf.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/shelf.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/system_log.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/system_log.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/user.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/mysql/data/yii2@002dstarter@002dkit/user.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/nginx/log/access_cms_yii2.log" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/log/access_cms_yii2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/nginx/log/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/log/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/nginx/log/error_cms_yii2.log" beforeDir="false" afterPath="$PROJECT_DIR$/docker/nginx/log/error_cms_yii2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/redis/data/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/docker/redis/data/dump.rdb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,7 +308,9 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/var/www/html/Yii2_TV/docker&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -231,6 +323,9 @@
       <recent name="$PROJECT_DIR$/backend/models" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/docker/nginx/conf.d" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/common/models" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -250,6 +345,8 @@
       <workItem from="1663896350010" duration="24923000" />
       <workItem from="1664000991488" duration="15901000" />
       <workItem from="1664112843314" duration="4933000" />
+      <workItem from="1664156699495" duration="35434000" />
+      <workItem from="1664243271698" duration="17391000" />
     </task>
     <servers />
   </component>
